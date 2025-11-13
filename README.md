@@ -20,23 +20,13 @@ scrapedikti/
 │       └── pddikti_service.py  # Service untuk PDDIKTI API
 ├── main.py                # FastAPI application
 ├── run.py                 # Script untuk menjalankan server
-├── start_dev.sh           # Development server script
-├── test_api.py            # Script untuk testing API
 ├── requirements.txt       # Dependencies
 ├── app_original.py        # Original script (untuk referensi)
 ├── .gitignore            # Git ignore file
 └── README.md
 ```
 
-## Instalasi
-
-### Method 1: Quick Start (Recommended)
-
-```bash
-./start_dev.sh
-```
-
-### Method 2: Manual Installation
+## Installation
 
 1. Buat virtual environment (opsional tapi direkomendasikan):
 
@@ -75,13 +65,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 ## Testing
 
-Untuk menguji API, jalankan script test:
-
-```bash
-python test_api.py
-```
-
-Atau test manual dengan curl:
+Untuk menguji API, jalankan perintah curl:
 
 ```bash
 # Cari mahasiswa dengan nama "Restu Imam Syafii"
