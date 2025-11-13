@@ -1,39 +1,39 @@
 # PDDIKTI Scraper API
 
-API sederhana untuk mengakses data mahasiswa dari PDDIKTI menggunakan FastAPI.
+A simple API to access student data from PDDIKTI using FastAPI.
 
-## Struktur Project
+## Project Structure
 
 ```
 scrapedikti/
 ├── app/
 │   ├── __init__.py
-│   ├── config.py          # Konfigurasi aplikasi
+│   ├── config.py          # Application configuration
 │   ├── api/
 │   │   ├── __init__.py
-│   │   └── students.py    # Endpoint untuk mahasiswa
+│   │   └── students.py    # Student endpoints
 │   ├── models/
 │   │   ├── __init__.py
-│   │   └── student.py     # Model Pydantic
+│   │   └── student.py     # Pydantic models
 │   └── services/
 │       ├── __init__.py
-│       └── pddikti_service.py  # Service untuk PDDIKTI API
+│       └── pddikti_service.py  # Service for the PDDIKTI API
 ├── main.py                # FastAPI application
-├── run.py                 # Script untuk menjalankan server
+├── run.py                 # Script to run the server
 ├── requirements.txt       # Dependencies
-├── app_original.py        # Original script (untuk referensi)
-├── .gitignore            # Git ignore file
+├── app_original.py        # Original script (for reference)
+├── .gitignore             # Git ignore file
 └── README.md
 ```
 
 ## Installation
 
-1. Buat virtual environment (opsional tapi direkomendasikan):
+1. Create a virtual environment (optional but recommended):
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
-# atau
+# or
 venv\Scripts\activate     # Windows
 ```
 
@@ -43,32 +43,32 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-3. Jalankan server:
+3. Run the server:
 
 ```bash
 python run.py
 ```
 
-Atau menggunakan uvicorn langsung:
+Or run uvicorn directly:
 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-## Penggunaan
+## Usage
 
-### Endpoint Tersedia
+### Available Endpoints
 
-1. **GET /** - Root endpoint
-2. **GET /health** - Health check
-3. **GET /api/v1/search/students?keyword={nama}** - Cari mahasiswa
+1. GET / — Root endpoint
+2. GET /health — Health check
+3. GET /api/v1/search/students?keyword={name} — Search students
 
 ## Testing
 
-Untuk menguji API, jalankan perintah curl:
+To test the API, run this curl command:
 
 ```bash
-# Cari mahasiswa dengan nama "Restu Imam Syafii"
+# Search for a student named "Restu Imam Syafii"
 curl "http://localhost:8000/api/v1/search/students?keyword=Restu%20Imam%20Syafii"
 ```
 
@@ -77,7 +77,7 @@ curl "http://localhost:8000/api/v1/search/students?keyword=Restu%20Imam%20Syafii
 ```json
 {
   "success": true,
-  "message": "Berhasil menemukan 2 data mahasiswa",
+  "message": "Successfully found 2 students",
   "data": [
     {
       "id": "HHcoIvXzHYZAIHyzuuwbqlEuLJlS0VbNr7ljYIYIVk_w-7LbQTpN7K1gxRDKHAXCrFWXDQ==",
@@ -92,23 +92,25 @@ curl "http://localhost:8000/api/v1/search/students?keyword=Restu%20Imam%20Syafii
 }
 ```
 
+Note: Field names in the response follow the source system (Indonesian), e.g., "nama" (name), "nama_prodi" (program), "nama_pt" (university).
+
 ## API Documentation
 
-Setelah menjalankan server, dokumentasi API dapat diakses di:
+After starting the server, the API docs are available at:
 
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
 
 ## Environment Variables
 
-- `DEBUG`: Set to "true" untuk development mode (default: false)
-- `HOST`: Host untuk server (default: 0.0.0.0)
-- `PORT`: Port untuk server (default: 8000)
-- `LOG_LEVEL`: Level logging (default: INFO)
+- `DEBUG`: Set to "true" for development mode (default: false)
+- `HOST`: Server host (default: 0.0.0.0)
+- `PORT`: Server port (default: 8000)
+- `LOG_LEVEL`: Logging level (default: INFO)
 
 ## Development
 
-Untuk development, set environment variable:
+For development, set the environment variable and run:
 
 ```bash
 export DEBUG=true
