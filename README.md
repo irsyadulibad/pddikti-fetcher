@@ -108,6 +108,24 @@ After starting the server, the API docs are available at:
 - `PORT`: Server port (default: 8000)
 - `LOG_LEVEL`: Logging level (default: INFO)
 
+### Environment file (.env)
+
+This project supports loading configuration from a `.env` file using `python-dotenv`. A sample file is provided as `.env.example`. To use it:
+
+1. Copy the example file to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+2. Edit `.env` to adjust settings (for example `DEBUG`, `HOST`, `PORT`, `LOG_LEVEL`).
+
+Notes:
+
+- Values in the `.env` file are loaded at application start and are used as defaults; environment variables set in the system will override `.env` values.
+- It's recommended to add `.env` to your `.gitignore` so secrets or environment-specific settings are not committed.
+- `.env.example` is safe to commit and documents the available variables and defaults.
+
 ## Development
 
 For development, set the environment variable and run:
